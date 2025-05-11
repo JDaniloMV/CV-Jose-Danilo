@@ -8,322 +8,245 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1A365D;
-      --secondary-color: #2C5282;
-      --accent-color: #48BB78;
+      --bg-color: #102a43;
+      --surface-color: #ffffff;
+      --primary-color: #33658a;
+      --accent-color: #86bbd8;
+      --text-color: #102a43;
+      --muted-text: #5f6c7b;
+      --border-color: #d1e3f0;
+      --header-gradient: linear-gradient(135deg, #33658a 0%, #ffffff 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg-color); color: var(--text-color); font-family: 'Segoe UI', sans-serif; line-height: 1.5; }
+    .header { position: relative; background: var(--header-gradient); padding: 3.5rem 1rem 5rem; text-align: center; overflow: hidden; }
+    .header::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 80px; background: url('data:image/svg+xml;charset=UTF-8,<svg width="100%" height="80" viewBox="0 0 1200 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C300,100 900,0 1200,100 L1200,100 L0,100 Z" fill="%231B1E2A"/></svg>') no-repeat bottom; background-size: cover; }    .photo { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--accent-color); object-fit: cover; transition: transform .3s; }
+    .photo:hover { transform: scale(1.1); }
+    .name { font-size: 2.25rem; font-weight: 700; margin-top: .75rem; }
+    .tagline { color: var(--muted-text); font-size: 1.125rem; margin-top: .5rem; position: relative; display: inline-block; }
+    .tagline::before, .tagline::after { content: ''; position: absolute; top: 50%; width: 40px; height: 1px; background: var(--accent-color); }
+    .tagline::before { left: -50px; }
+    .tagline::after { right: -50px; }
+    .filter-bar { text-align: center; margin: 1rem 0; }
+    .filter-bar .btn { margin: 0 .5rem; }
+    .filter-bar .active { background-color: var(--primary-color); color: #fff; }
+    .container-custom { display: flex; flex-wrap: wrap; max-width: 1200px; margin: 2rem auto; }
+    .sidebar { flex: 1 1 300px; background: var(--surface-color); border-radius: 8px; padding: 1.75rem; margin: .5rem; border: 1px solid var(--border-color); }
+    .main { flex: 2 1 600px; padding: 1.75rem; margin: .5rem; background: var(--surface-color); border-radius: 8px; border: 1px solid var(--border-color); }
+    .section { margin-bottom: 2.25rem; }
+    .section-title { font-size: 1.35rem; font-weight: 600; position: relative; padding-bottom: .5rem; margin-bottom: 1rem; color: var(--primary-color); }
+    .section-title:after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 4px; background: var(--accent-color); }
+    .badge-skill { background: var(--border-color); color: var(--text-color); padding: .5rem 1rem; border-radius: 20px; margin: .25rem; display: inline-block; font-size: .9rem; }
+    .timeline-item { position: relative; padding-left: 1.75rem; margin-bottom: 1.75rem; border-left: 3px solid var(--primary-color); }
+    .timeline-item:before { content: '\f111'; font-family: "Font Awesome 5 Free"; font-weight: 900; position: absolute; left: -10px; top: 2px; font-size: .75rem; color: var(--accent-color); }
+    .timeline-item p, .timeline-item ul { margin-top: .5rem; color: var(--muted-text); font-size: .9rem; }
+    a { color: var(--accent-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .footer { background: var(--surface-color); padding: 1.5rem 1rem; text-align: center; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+    .btn-download { background: var(--accent-color); color: var(--surface-color); padding: .75rem 1.5rem; border-radius: 30px; font-weight: 600; border: none; transition: transform .2s; text-decoration: none; display: inline-block; }
+    .btn-download:hover { transform: scale(1.05); }
+    .hidden { display: none !important; }
+    /* Botão filtro - estado padrão */
+    .filter-btn {
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     }
 
-    body { 
-      background-color: #f8f9fa; 
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      line-height: 1.6;
-      color: #2D3748;
-    }
-    
-    .header { 
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      padding: 4rem 0 6rem 0;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-      margin-bottom: -3rem;
+    /* Hover */
+    .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
     }
 
-    .photo { 
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
-
-    .photo:hover {
-      transform: scale(1.05);
-    }
-
-    .section-title {
-      color: var(--primary-color);
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 0.5rem;
-      margin: 2rem 0 1.5rem;
-    }
-
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--secondary-color);
-    }
-
-    .card-custom {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: none;
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-
-    .skill-badge {
-      background: #e3f2fd;
-      color: var(--primary-color);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      margin: 0.25rem;
-      display: inline-block;
-      font-size: 0.9rem;
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 30px;
-      border-left: 3px solid var(--secondary-color);
-      margin-left: 15px;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item:before {
-      content: '';
-      position: absolute;
-      left: -38px;
-      top: 5px;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: white;
-      border: 3px solid var(--secondary-color);
-    }
-
-    .qr-section {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      border-radius: 15px;
-      padding: 2rem;
-      color: white;
-      text-align: center;
-    }
-
-    .btn-custom {
-      background: var(--accent-color);
-      color: white;
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      border: none;
-    }
-
-    .education-item {
-      border-left: 3px solid var(--secondary-color);
-      padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-        padding: 3rem 0 5rem 0;
-      }
-      
-      .photo {
-        width: 120px;
-        height: 120px;
-      }
+    /* Botão ativo */
+    .filter-btn.active {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tag = btn.dataset.tag;
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.querySelectorAll('[data-tags]').forEach(el => {
+            const tags = el.dataset.tags.split(',');
+            if (tag === 'all' || tags.includes(tag)) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+          });
+        });
+      });
+      // activate 'Todos' on load
+      document.querySelector('.filter-btn[data-tag="all"]').click();
+    });
+  </script>
 </head>
 <body>
-  <!-- Header -->
-  <div class="header text-center">
-    <div class="container">
-      <img src="photo.jpg" alt="Foto de José Danilo" class="photo mb-4">
-      <h1 class="text-white display-5 fw-bold mb-3">José Danilo Martins Vieira</h1>
-      <div class="d-flex justify-content-center gap-2">
-        <span class="badge bg-light text-primary fs-6 fw-normal">Finanças</span>
-        <span class="badge bg-light text-primary fs-6 fw-normal">Data Science</span>
-        <span class="badge bg-light text-primary fs-6 fw-normal">Desenvolvimento Web</span>
+  <div class="header">
+    <img src="photo.jpg" alt="Foto de José Danilo" class="photo">
+    <h1 class="name">José Danilo Martins Vieira</h1>
+  </div>
+  <div class="filter-bar">
+    <button class="btn filter-btn" data-tag="all">Todos</button>
+    <button class="btn filter-btn" data-tag="financas">Finanças</button>
+    <button class="btn filter-btn" data-tag="data-science">Data Science</button>
+    <button class="btn filter-btn" data-tag="web">Desenvolvimento Web</button>
+  </div>
+  <div class="container-custom">
+    <aside class="sidebar" data-tags="all,financas,data-science,web">
+      <div class="section">
+        <section class="section personal-info" data-tags="all,financas,data-science,web">
+        <h2 class="section-title">
+            <i class="fas fa-user-circle me-2"></i>Sobre Mim
+        </h2>
+        <ul class="list-unstyled contact-list">
+            <li><i class="fas fa-map-marker-alt me-2"></i> Butantã, São Paulo - SP</li>
+            <li><i class="fas fa-phone me-2"></i> <a href="tel:85997436297">(85) 99743-6297</a></li>
+            <li><i class="fas fa-envelope me-2"></i> <a href="mailto:danilo_matins25@usp.br">danilo_matins25@usp.br</a></li>
+            <li><i class="fab fa-linkedin me-2"></i> <a href="https://linkedin.com/in/jdanilomartinsv25" target="_blank">linkedin.com/in/jdanilomartinsv25</a></li>
+        </ul>
+        <ul class="list-inline mt-3">
+            <li class="list-inline-item me-4"><i class="fas fa-birthday-cake me-1"></i>29 anos</li>
+            <li class="list-inline-item"><i class="fas fa-heart me-1"></i>Solteiro</li>
+        </ul>
+        </section>
+
       </div>
+      <div class="section" data-tags="all,web,financas,data-science">
+        <h2 class="section-title"><i class="fas fa-language me-2"></i>Idiomas</h2>
+        <ul class="list-unstyled">
+          <li><strong>Inglês:</strong> Avançado (C2)</li>
+        </ul>
+      </div>
+      <div class="section" data-tags="all,web,financas,data-science">
+        <h2 class="section-title"><i class="fas fa-tools me-2"></i>Habilidades</h2>
+        <div>
+          <span class="badge-skill">Python (Pandas, NumPy)</span>
+          <span class="badge-skill">SQL/MySQL</span>
+          <span class="badge-skill">JavaScript ES6+</span>
+          <span class="badge-skill">Django</span>
+          <span class="badge-skill">Power BI</span>
+          <span class="badge-skill">React</span>
+          <span class="badge-skill">Git & GitHub</span>
+          <span class="badge-skill">Análise de Dados</span>
+        </div>
+      </div>
+      <div class="section" data-tags="all,web,financas,data-science">
+        <h2 class="section-title"><i class="fas fa-user-friends me-2"></i>Referências</h2>
+        <ul class="list-unstyled ref-list">
+          <li><strong>Prof. Dr. José Perez</strong><br>Orientador Acadêmico - USP<br><a href="mailto:carlos.silva@usp.br">exemplo@usp.br</a></li>
+          <li><strong>Maria Fernandes</strong><br>Gerente - Fortes Tecnologia<br><a href="mailto:m.fernandes@fortestech.com">exemplo@fortestech.com</a></li>
+        </ul>
+      </div>
+    </aside>
+<main class="main">
+  <!-- Perfil Profissional -->
+  <div class="section" data-tags="all,web,financas,data-science">
+    <h2 class="section-title">
+      <i class="fas fa-user-tie me-2"></i>Perfil Profissional
+    </h2>
+    <p>
+      Estudante de Sistemas de Informação na USP com expertise em análise financeira e desenvolvimento de soluções data-driven que geram insights estratégicos para a tomada de decisão.
+    </p>
+  </div>
+
+  <!-- Formação Acadêmica -->
+  <div class="section" data-tags="all,data-science,web,financas">
+    <h2 class="section-title">
+      <i class="fas fa-graduation-cap me-2"></i>Formação Acadêmica
+    </h2>
+  <div class="section" data-tags="all,web,data-science">
+    <h2 class="section-title">
+      <h5>Bacharelado em Sistemas de Informação</h5>
+      <small class="text-muted">Universidade de São Paulo (USP) | 2022 - 2026</small>
+      <p>Principais disciplinas: Banco de Dados, Engenharia de Software, Estatística, Inteligência Artificial e Análise de Sistemas.</p>
+    </div>
+  <div class="section" data-tags="all,data-science">
+    <h2 class="section-title">
+      <h5>MBA em Data Science e Analytics</h5>
+      <small class="text-muted">Universidade de São Paulo (USP) | 2023 - 2025</small>
+      <p>Estudos avançados em Machine Learning, Visualização de Dados, Big Data e Métodos Estatísticos Aplicados ao Mercado Financeiro.</p>
+    </div>
+  <div class="section" data-tags="all,financas">
+    <h2 class="section-title">
+      <h5>Bacharelado em Ciências Contábeis</h5>
+      <small class="text-muted">Universidade Federal do Ceará (UFC) | Ago. 2018 - Ago. 2022</small>
+      <p>Foco em Auditoria, Controladoria, Gestão Tributária e Contabilidade Gerencial. TCC: "Análise de Indicadores Financeiros em PMEs".</p>
     </div>
   </div>
 
-  <!-- Main content -->
-  <div class="container mt-5">
-    <div class="row g-4">
-      <!-- Sidebar -->
-      <div class="col-lg-4">
-        <div class="card-custom p-4">
-          <h2 class="section-title">Contato</h2>
-          <ul class="list-unstyled">
-            <li class="mb-3">
-              <i class="fas fa-phone me-2"></i>
-              <a href="tel:85997436297" class="text-decoration-none text-dark">(85) 99743-6297</a>
-            </li>
-            <li class="mb-3">
-              <i class="fas fa-envelope me-2"></i>
-              <a href="mailto:danilo_matins25@usp.br" class="text-decoration-none text-dark">danilo_matins25@usp.br</a>
-            </li>
-            <li class="mb-3">
-              <i class="fas fa-map-marker-alt me-2"></i>
-              Butantã, São Paulo, SP
-            </li>
-            <li class="mb-3">
-              <i class="fab fa-linkedin me-2"></i>
-              <a href="https://linkedin.com/in/jdanilomartinsv25" target="_blank" class="text-decoration-none text-dark">/jdanilomartinsv25</a>
-            </li>
-          </ul>
-
-          <h2 class="section-title">Idiomas</h2>
-          <div class="d-flex flex-column gap-2">
-            <div class="d-flex align-items-center">
-              <span class="badge bg-primary me-2">EN</span>
-              <span>Inglês Avançado (C2)</span>
-            </div>
-          </div>
-
-          <h2 class="section-title">Habilidades</h2>
-          <div class="d-flex flex-wrap">
-            <span class="skill-badge">Python (Pandas, NumPy)</span>
-            <span class="skill-badge">SQL/MySQL</span>
-            <span class="skill-badge">JavaScript ES6+</span>
-            <span class="skill-badge">Django</span>
-            <span class="skill-badge">Power BI</span>
-            <span class="skill-badge">React</span>
-            <span class="skill-badge">Git & GitHub</span>
-            <span class="skill-badge">Análise de Dados</span>
-          </div>
-
-          <h2 class="section-title">Referências</h2>
-          <ul class="list-unstyled mt-3">
-            <li class="mb-3">
-              <strong>Prof. Dr. Carlos Silva</strong><br>
-              Orientador Acadêmico - USP<br>
-              carlos.silva@usp.br
-            </li>
-            <li class="mb-3">
-              <strong>Maria Fernandes</strong><br>
-              Gerente - Fortes Tecnologia<br>
-              m.fernandes@fortestech.com
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="col-lg-8">
-        <div class="card-custom p-4">
-          <h2 class="section-title">Perfil Profissional</h2>
-          <p class="lead">Estudante de Sistemas de Informação na USP com expertise em análise financeira e desenvolvimento de soluções data-driven. Combino conhecimentos em contabilidade, ciência de dados e desenvolvimento web para criar insights estratégicos e ferramentas eficientes.</p>
-
-          <h2 class="section-title">Formação Acadêmica</h2>
-          <div class="education-item">
-            <h5 class="fw-bold">Bacharelado em Sistemas de Informação</h5>
-            <div class="d-flex justify-content-between text-muted small mb-2">
-              <span>Universidade de São Paulo (USP)</span>
-              <span>2022 - 2026</span>
-            </div>
-          </div>
-
-          <div class="education-item">
-            <h5 class="fw-bold">Bacharelado em Ciências Contábeis</h5>
-            <div class="d-flex justify-content-between text-muted small mb-2">
-              <span>Universidade Federal do Ceará (UFC)</span>
-              <span>Ago. 2018 - Ago. 2022</span>
-            </div>
-            <p class="small text-muted">TCC: "Análise de Indicadores Financeiros em PMEs"</p>
-          </div>
-
-          <div class="education-item">
-            <h5 class="fw-bold">MBA em Data Science e Analytics</h5>
-            <div class="d-flex justify-content-between text-muted small mb-2">
-              <span>Universidade de São Paulo (USP)</span>
-              <span>2023 - 2025</span>
-            </div>
-          </div>
-
-          <h2 class="section-title">Experiência Profissional</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h5 class="fw-bold">Suporte Fiscal</h5>
-              <div class="d-flex justify-content-between text-muted small mb-2">
-                <span>Fortes Tecnologia</span>
-                <span>Dez 2021 - Dez 2022</span>
-              </div>
-              <ul class="list-unstyled">
-                <li class="mb-2">• Automação de processos fiscais com Python</li>
-                <li class="mb-2">• Redução de 30% em divergências contábeis</li>
-                <li class="mb-2">• Implementação de relatórios SPED/ECF automatizados</li>
-              </ul>
-            </div>
-
-            <div class="timeline-item">
-              <h5 class="fw-bold">Estagiário Contábil</h5>
-              <div class="d-flex justify-content-between text-muted small mb-2">
-                <span>Exercon Soluções</span>
-                <span>2021</span>
-              </div>
-              <ul class="list-unstyled">
-                <li class="mb-2">• Otimização de fluxos financeiros</li>
-                <li class="mb-2">• Gestão de obrigações acessórias para 40+ clientes</li>
-              </ul>
-            </div>
-          </div>
-
-          <h2 class="section-title">Projetos & Atividades</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h5 class="fw-bold">Pesquisador Júnior – USP</h5>
-              <div class="d-flex justify-content-between text-muted small mb-2">
-                <span>Ago 2024 - Ago 2025</span>
-              </div>
-              <ul class="list-unstyled">
-                <li class="mb-2">• Extensão da ontologia O3PO para eletrificação de plataformas</li>
-                <li class="mb-2">• Modelagem de dados em Python e OntoUML</li>
-              </ul>
-            </div>
-
-            <div class="timeline-item">
-              <h5 class="fw-bold">Catálogo de Planárias Terrestres</h5>
-              <div class="d-flex justify-content-between text-muted small mb-2">
-                <span>2023</span>
-              </div>
-              <ul class="list-unstyled">
-                <li class="mb-2">• Sistema full-stack com Django/MySQL</li>
-                <li class="mb-2">• Catalogação de 500+ amostras biológicas</li>
-              </ul>
-            </div>
-
-            <div class="timeline-item">
-              <h5 class="fw-bold">SmartJump - FEA USP</h5>
-              <div class="d-flex justify-content-between text-muted small mb-2">
-                <span>2024</span>
-              </div>
-              <ul class="list-unstyled">
-                <li class="mb-2">• Dashboard em tempo real com WebSockets</li>
-                <li class="mb-2">• Desenvolvimento front-end com React</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="qr-section mt-4">
-          <div class="d-flex flex-column align-items-center">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://seu-usuario.github.io/meu-curriculo/&size=150x150" alt="QR Code" width="120" class="mb-3">
-            <p class="small mb-3">Acesse esta versão online</p>
-            <a href="Curriculo_JoseDanilo.pdf" class="btn btn-custom">
-              <i class="fas fa-download me-2"></i>Baixar PDF
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- Experiência Profissional -->
+  <div class="section" data-tags="all,financas,web">
+    <h2 class="section-title">
+      <i class="fas fa-briefcase me-2"></i>Experiência Profissional
+    </h2>
+  <div class="section" data-tags="all,financas">
+    <h2 class="section-title">
+      <h5>Suporte Fiscal - Fortes Tecnologia</h5>
+      <small class="text-muted">Dez 2021 - Dez 2022</small>
+      <ul>
+        <li>Automação de processos fiscais com Python</li>
+        <li>Redução de 30% em divergências contábeis</li>
+        <li>Implementação de relatórios SPED/ECF automatizados</li>
+      </ul>
+    </div>
+  <div class="section" data-tags="all,financas">
+    <h2 class="section-title">
+      <h5>Estagiário Contábil - Exercon Soluções</h5>
+      <small class="text-muted">2021</small>
+      <ul>
+        <li>Otimização de fluxos financeiros</li>
+        <li>Gestão de obrigações acessórias para 40+ clientes</li>
+      </ul>
     </div>
   </div>
+
+  <!-- Projetos & Atividades -->
+  <div class="section" data-tags="all,data-science,web,financas">
+    <h2 class="section-title">
+      <i class="fas fa-project-diagram me-2"></i>Projetos & Atividades
+    </h2>
+  <div class="section" data-tags="all,web">
+    <h2 class="section-title">
+      <h5>Catálogo de Planárias Terrestres</h5>
+      <small class="text-muted">2023</small>
+      <ul>
+        <li>Sistema full-stack com Django/MySQL</li>
+        <li>Catalogação de 500+ amostras biológicas</li>
+      </ul>
+    </div>
+  <div class="section" data-tags="all,web">
+    <h2 class="section-title">
+      <h5>SmartJump - FEA USP</h5>
+      <small class="text-muted">2024</small>
+      <ul>
+        <li>Dashboard em tempo real com WebSockets</li>
+        <li>Desenvolvimento front-end com React</li>
+      </ul>
+    </div>
+  </div>
+    <div class="section" data-tags="all,financas">
+    <h2 class="section-title">
+      <h5>Monitoria em Administração Financeira</h5>
+      <small class="text-muted">2019</small>
+      <ul>
+        <li>Auxiliar professor</li>
+        <li>Dar aula</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+  </div>
+  <footer class="footer" data-tags="all,financas,data-science,web">
+    <a href="Curriculo_JoseDanilo.pdf" class="btn-download" download>
+      <i class="fas fa-file-download me-2"></i>Baixar Currículo (PDF)
+    </a>
+  </footer>
 </body>
 </html>

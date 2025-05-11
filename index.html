@@ -6,97 +6,104 @@
   <title>José Danilo Martins Vieira - Currículo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body { background-color: #f0f2f5; }
-    .card { border: none; }
-    .section-title { color: #005288; font-weight: 600; margin-top: 1.5rem; }
-    .photo-placeholder { width: 150px; height: 150px; background-color: #ddd; border-radius: 50%; display: inline-block; }
+    body { background-color: #eef2f5; color: #333; }
+    .header { background-color: #005288; color: #fff; padding: 40px 0; }
+    .header h1 { font-size: 2.5rem; margin-bottom: 0; }
+    .header p { font-size: 1.1rem; }
+    .photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #fff; }
+    .section-title { color: #005288; font-weight: 600; margin-top: 2rem; border-bottom: 2px solid #005288; display: inline-block; }
+    .bg-card { background-color: #fff; border-radius: .5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 2rem; margin-bottom: 2rem; }
   </style>
 </head>
 <body>
-  <div class="container py-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 offset-md-2">
-        <div class="card p-4 shadow-sm bg-white">
-          <div class="text-center mb-4">
-            <!-- Espaço para foto -->
-            <div class="photo-placeholder mb-3"></div>
-            <h1 class="h3 text-primary">José Danilo Martins Vieira</h1>
-            <p class="text-muted">Candidato a Estágio em Finanças • Ciências de Dados • Desenvolvimento Web</p>
+  <!-- Header -->
+  <div class="header text-center">
+    <div class="container">
+      <img src="photo.jpg" alt="Foto de José Danilo" class="photo mb-3">
+      <h1>José Danilo Martins Vieira</h1>
+      <p>Candidato a Estágio em Finanças • Data Science • Desenvolvimento Web</p>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="container mt-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <div class="bg-card">
+          <h2 class="section-title">Contato</h2>
+          <ul class="list-unstyled mt-3">
+            <li><strong>📞 Telefone:</strong> (85) 99743-6297</li>
+            <li><strong>✉️ Email:</strong> <a href="mailto:danilo_matins25@usp.br">danilo_matins25@usp.br</a></li>
+            <li><strong>📍 Localização:</strong> Butantã, São Paulo, SP</li>
+            <li><strong>🔗 LinkedIn:</strong> <a href="https://www.linkedin.com/in/jdanilomartinsv25/" target="_blank">/in/jdanilomartinsv25</a></li>
+          </ul>
+
+          <h2 class="section-title">Idiomas</h2>
+          <ul class="list-unstyled mt-3">
+            <li>🇬🇧 Inglês – Upper Intermediate (Casa de Cultura Britânica UFC, 2016–2017)</li>
+            <li>🇬🇧 Inglês – Advanced (Casa de Cultura Britânica UFC, 2017–2018)</li>
+          </ul>
+
+          <h2 class="section-title">Habilidades Técnicas</h2>
+          <ul class="list-unstyled mt-3">
+            <li><strong>Python</strong> (pandas, NumPy)</li>
+            <li><strong>SQL/MySQL</strong></li>
+            <li><strong>JavaScript (ES6+)</strong>, HTML5, CSS3</li>
+            <li><strong>Django</strong>, Bootstrap, React (básico)</li>
+            <li><strong>Power BI</strong>, Excel Avançado</li>
+            <li><strong>Git, GitHub Pages</strong></li>
+            <li>SPED/ECF, Docker (básico)</li>
+          </ul>
+
+          <h2 class="section-title">Referências</h2>
+          <ul class="list-unstyled mt-3">
+            <li>Nome – Cargo – Empresa – email@empresa.com</li>
+            <li>Nome – Cargo – Empresa – email@empresa.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="col-lg-8">
+        <div class="bg-card">
+          <h2 class="section-title">Resumo</h2>
+          <p class="mt-3">Estudante de Sistemas de Informação na USP com sólida formação em Ciências Contábeis e MBA em Data Science. Experiência em desenvolvimento web full-stack (Django/MySQL), automação de relatórios fiscais e criação de dashboards financeiros. Proativo e orientado a resultados, busco estágio em Finanças, Data Analytics ou Desenvolvimento Web para apoiar decisões estratégicas com soluções inovadoras.</p>
+
+          <h2 class="section-title">Formação Acadêmica</h2>
+          <ul class="mt-3">
+            <li><strong>SI – USP</strong>, Conclusão prevista: Dez/2026</li>
+            <li><strong>Ciências Contábeis – UFC</strong>, Concluído: Dez/2022</li>
+            <li><strong>MBA Data Science – USP</strong>, Conclusão prevista: Dez/2025</li>
+            <li><strong>Administrador de BD – IFRS</strong>, Concluído: Jan/2026</li>
+          </ul>
+
+          <h2 class="section-title">Experiência Profissional</h2>
+          <div class="mt-3">
+            <p><strong>Suporte Fiscal – Fortes Tecnologia</strong> (Dez/2021 – Dez/2022, Fortaleza)</p>
+            <ul>
+              <li>Conciliar contas, reduzindo divergências em 30%.</li>
+              <li>Automatizar relatórios SPED/ECF com Python, economizando 10h/mês.</li>
+            </ul>
+
+            <p class="mt-2"><strong>Estagiário – Exercon Soluções Contábeis</strong> (2021, Fortaleza)</p>
+            <ul>
+              <li>Atendimento a 40+ clientes em obrigações acessórias.</li>
+              <li>Otimização de planilhas de fluxo de caixa e relatórios gerenciais.</li>
+            </ul>
           </div>
 
-          <div class="text-center mb-3">
-            <a href="Curriculo_JoseDanilo.pdf" class="btn btn-outline-primary" download>📄 Baixar PDF</a>
+          <h2 class="section-title">Projetos & Atividades</h2>
+          <div class="mt-3">
+            <p><strong>Pesquisador Júnior – USP</strong> (Ago/2024 – Ago/2025): Extensão da ontologia O3PO para eletrificação de plataformas.</p>
+            <p><strong>Catálogo de Planárias Terrestres</strong> (USP): Sistema individual em HTML, CSS, JS, Django e MySQL para catalogar 500+ amostras.</p>
+            <p><strong>SmartJump – Empreendedorismo Digital (FEA USP)</strong>: Desenvolvimento de site institucional e dashboard em tempo real com WebSockets.</p>
           </div>
 
-          <div class="row">
-            <div class="col-md-8">
-              <h2 class="section-title">📞 Contato</h2>
-              <ul class="list-unstyled">
-                <li><strong>Telefone:</strong> (85) 99743-6297</li>
-                <li><strong>Email:</strong> <a href="mailto:danilo_matins25@usp.br">danilo_matins25@usp.br</a></li>
-                <li><strong>Localização:</strong> Butantã - São Paulo, SP</li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jdanilomartinsv25/" target="_blank">linkedin.com/in/jdanilomartinsv25</a></li>
-              </ul>
-
-              <h2 class="section-title">🧠 Perfil</h2>
-              <p>Estudante de SI na USP com sólida formação em contabilidade e MBA em Data Science, desenvolvendo projetos web full-stack (Django/MySQL) e dashboards financeiros (Power BI). Busco estágio em Finanças, Data Analytics ou Desenvolvimento Web para aplicar modelos estatísticos e automações que apoiem decisões estratégicas.</p>
-
-              <h2 class="section-title">🎓 Formação Acadêmica</h2>
-              <ul>
-                <li><strong>Bacharelado em Sistemas de Informação</strong> – USP<br/>Conclusão prevista: Dez/2026</li>
-                <li><strong>Bacharelado em Ciências Contábeis</strong> – UFC<br/>Concluído: Dez/2022</li>
-                <li><strong>MBA em Data Science</strong> – USP<br/>Conclusão prevista: Dez/2025</li>
-                <li><strong>Administrador de Banco de Dados</strong> – IFRS<br/>Concluído: Jan/2026</li>
-              </ul>
-
-              <h2 class="section-title">🗣️ Idiomas</h2>
-              <ul>
-                <li>Inglês – Upper Intermediate (Casa de Cultura Britânica da UFC, 2016–2017)</li>
-                <li>Inglês – Advanced Course (Casa de Cultura Britânica da UFC, 2017–2018)</li>
-              </ul>
-
-              <h2 class="section-title">💼 Experiência Profissional</h2>
-              <p><strong>Suporte Fiscal - Tecnológico</strong> na Fortes Tecnologia<br/>
-              Dez/2021 – Dez/2022 – Fortaleza  
-              <ul>
-                <li>Implantação de rotina de conciliação contábil que reduziu divergências em 30%.</li>
-                <li>Automatização de relatórios SPED/ECF via scripts Python, poupando 10h/mês de trabalho manual.</li>
-              </ul>
-              </p>
-              <p><strong>Estagiário – Exercon Soluções Contábeis</strong><br/>
-              2021 – Fortaleza  
-              <ul>
-                <li>Atendimento de 40+ clientes mensais em obrigações acessórias.</li>
-                <li>Aprimoramento de planilhas de fluxo de caixa e relatórios gerenciais.</li>
-              </ul>
-              </p>
-
-              <h2 class="section-title">📚 Atividades & Projetos</h2>
-              <p><strong>Pesquisador Júnior</strong> – USP (Ago/2024 – Ago/2025)<br/>Pesquisa sobre a ontologia O3PO com foco em eletrificação de plataformas de petróleo.</p>
-              <p><strong>Sistema de Catalogação de Planárias Terrestres</strong> – Lab. de Biologia Evolutiva da USP<br/>Desenvolvido individualmente com HTML, CSS, JS, Django e MySQL.</p>
-              <p><strong>Website & Dashboard SmartJump</strong> – Disciplina de Empreendedorismo Digital (FEA USP)<br/>Criando site institucional e painel de visualização de dados em tempo real.</p>
-
-              <h2 class="section-title">📘 Referências</h2>
-              <ul>
-                <li>Nome da Referência 1 – Cargo – Empresa – contato@email.com</li>
-                <li>Nome da Referência 2 – Cargo – Empresa – contato@email.com</li>
-              </ul>
-
-              <h2 class="section-title">🔧 Habilidades Técnicas</h2>
-              <ul>
-                <li><strong>Linguagens:</strong> Python (pandas, NumPy), SQL/MySQL, JavaScript (ES6+), HTML5, CSS3</li>
-                <li><strong>Frameworks:</strong> Django, Bootstrap, React (básico)</li>
-                <li><strong>Data & BI:</strong> Power BI, Excel Avançado, estatística descritiva, visualização de dados</li>
-                <li><strong>Controle de Versão:</strong> Git, GitHub Pages</li>
-                <li><strong>Outros:</strong> SPED/ECF, metodologias ágeis, Docker (básico)</li>
-              </ul>
-            </div>
-
-            <div class="col-md-4 text-center">
-              <h2 class="section-title">🔗 Acesse Online</h2>
-              <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://seu-usuario.github.io/meu-curriculo/&size=200x200" alt="QR Code para currículo" class="img-fluid rounded mb-2">
-              <p class="small">Escaneie para acessar online</p>
-            </div>
+          <h2 class="section-title">QR Code & Download</h2>
+          <div class="d-flex align-items-center mt-3">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://seu-usuario.github.io/meu-curriculo/&size=150x150" alt="QR Code" class="me-3">
+            <a href="Curriculo_JoseDanilo.pdf" class="btn btn-primary">📄 Baixar PDF</a>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -81,7 +81,9 @@
       const themeToggle = document.createElement('button');
       themeToggle.id = 'themeToggle';
       themeToggle.className = 'btn-theme-toggle';
-      document.body.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.setAttribute('data-theme', savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme); // sincronia opcional
       themeToggle.textContent = document.body.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
       themeToggle.addEventListener('click', () => {
         const current = document.body.getAttribute('data-theme');

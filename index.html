@@ -56,7 +56,7 @@
     .btn-download:hover { transform: scale(1.05); }
     .hidden { display: none !important; }
     .btn-theme-toggle { position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; }
-    body[data-theme="dark"] .filter-bar .filter-btn { color: #ffffff !important;}
+    body[data-theme="dark"] .filter-bar .filter-btn {color: #ffffff;} body[data-theme="dark"] .filter-bar .filter-btn.active { background-color: var(--accent-color); color: #102a43;}
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
